@@ -13,6 +13,8 @@ variables:
   solution: '**/SampleFunctionApp31.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  
+  
 
 steps:
 - task: NuGetToolInstaller@1
@@ -32,3 +34,20 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+
+trigger:
+- main
+
+variables:
+  azureSubscription: 'Visual Studio Professional met MSDN'
+  appName: 'functionAppTest1'
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+- task: AzureFunctionApp@1 # Add this at the end of your file
+  inputs:
+    azureSubscription: 'Visual Studio Professional met MSDN'
+    appType: functionAppLinux
+    appName: $(appName)
+    package: $(System.ArtifactsDirectory)/**/*.zip
