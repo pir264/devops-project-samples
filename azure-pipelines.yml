@@ -14,6 +14,12 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
   
+  azureSubscription: 'Visual Studio Professional met MSDN'
+  appName: 'functionAppTest1'
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+  
   
 
 steps:
@@ -36,14 +42,8 @@ steps:
     configuration: '$(buildConfiguration)'
 
 
-trigger:
-- main
 
-variables:
-  azureSubscription: 'Visual Studio Professional met MSDN'
-  appName: 'functionAppTest1'
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+
 
 - task: AzureFunctionApp@1 # Add this at the end of your file
   inputs:
