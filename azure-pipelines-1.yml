@@ -17,7 +17,7 @@ variables:
   vmImageName: 'vs2017-win2016'
 
   # Working Directory
-  workingDirectory: '*/aspnetcore31/*'
+  workingDirectory: '/dotnet/aspnetcore31/functionApp/'
 
 stages:
 - stage: Build
@@ -33,14 +33,14 @@ stages:
     steps:
     - task: CmdLine@2
       inputs:
-        script: 'dir  $(workingDirectory)'
+        script: 'dir  $(System.DefaultWorkingDirectory)'
 
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
         command: 'build'
         projects: |
-          $(workingDirectory)/SampleFunctionApp.csproj
+          $(workingDirectory)*/SampleFunctionApp.csproj
         arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
 
     - task: ArchiveFiles@2
