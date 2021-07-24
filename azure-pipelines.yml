@@ -16,6 +16,7 @@ variables:
   
   azureSubscription: 'Visual Studio Professional met MSDN'
   appName: 'functionAppTest2pw20210724'
+  appName2: 'functionAppTest2pw20210724a'
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
@@ -46,5 +47,11 @@ steps:
     azureSubscription: 'Visual Studio Professional met MSDN'
     appType: functionAppLinux
     appName: $(appName)
-    package: $(System.DefaultWorkingDirectory)/**/*.zip
-    #package: $(System.ArtifactsDirectory)/**/*.zip
+    package: $(System.ArtifactsDirectory)/**/*.zip
+
+- task: AzureFunctionApp@1 # Add this at the end of your file
+  inputs:
+    azureSubscription: 'Visual Studio Professional met MSDN'
+    appType: functionApp
+    appName: $(appName2)
+    package: $(System.ArtifactsDirectory)/**/*.zip
