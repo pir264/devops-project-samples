@@ -33,14 +33,13 @@ stages:
     steps:
     - task: CmdLine@2
       inputs:
-        script: 'dir  $(System.DefaultWorkingDirectory)'
+        script: 'dir /s /b $(System.DefaultWorkingDirectory)\dotnet\aspnetcore31\functionApp'
 
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
         command: 'build'
-        projects: |
-          $(workingDirectory)*/SampleFunctionApp.csproj
+        projects: '$(workingDirectory)*/SampleFunctionApp.csproj'
         arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
 
     - task: ArchiveFiles@2
