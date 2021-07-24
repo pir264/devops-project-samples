@@ -15,7 +15,7 @@ variables:
   buildConfiguration: 'Release'
   
   azureSubscription: 'Visual Studio Professional met MSDN'
-  appName: 'functionAppTest1'
+  appName: 'functionAppTest2pw20210724'
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
