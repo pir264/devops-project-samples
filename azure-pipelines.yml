@@ -50,4 +50,5 @@ steps:
     azureSubscription: 'Visual Studio Professional met MSDN'
     appType: functionAppLinux
     appName: $(appName)
-    package: $(System.ArtifactsDirectory)/**/*.zip
+    package: $(System.artifactStagingDirectory)/**/*.zip
+    #package: $(System.ArtifactsDirectory)/**/*.zip
