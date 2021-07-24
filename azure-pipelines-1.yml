@@ -17,11 +17,12 @@ variables:
   vmImageName: 'vs2017-win2016'
 
   # Working Directory
-  workingDirectory: '/*/aspnetcore31/*'
+  workingDirectory: '*/aspnetcore31/*'
 
 stages:
 - stage: Build
   displayName: Build stage
+  condition: 
 
   jobs:
   - job: Build
@@ -30,6 +31,10 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
+    - task: CmdLine@2
+      inputs:
+        script: 'dir  $(workingDirectory)'
+
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
