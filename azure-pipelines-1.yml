@@ -39,7 +39,7 @@ stages:
       displayName: Build
       inputs:
         command: 'build'
-        projects: '/dotnet/aspnetcore31/functionApp/**/*.csproj'
+        projects: /dotnet/aspnetcore31/functionApp/**/*.csproj
         arguments: --output $(System.DefaultWorkingDirectory)/publish_output --configuration Release
 
     - task: ArchiveFiles@2
